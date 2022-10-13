@@ -10,8 +10,9 @@
             <h6><strong>{{product.name}}</strong></h6>
             <hr>
             <button data-product="{{product.id}}" data-action="add" class="btn-outline-secondary add-btn update-cart">Add to cart</button>
-            <a class="btn btn-outline-success" href="#">view</a>
-            <h4 style="display: inline-block">${{product.price|floatformat:2}}</h4>
+            <a class="btn btn-outline-success" href="{%url 'detailview' product.id%}">view</a>
+           <label class="btn btn-outline-warning" href="#">{{product.status}}</label>
+            <h4 style="display: inline-block">ksh{{product.price|floatformat:2}}</h4>
        </div>
     </div>
 {% endfor %}

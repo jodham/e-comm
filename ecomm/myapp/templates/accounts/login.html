@@ -1,0 +1,28 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="py-5 text-center mt-3 text-info h3">Sign in</div>
+  {%for messages in message%}
+  <div class="alert alert-{{message-tags text-danger">
+    message
+  </div>
+  {%endfor%}
+  <div class="row">
+    <div class="col-md-8 mt-3 p-3 text-center shadow-lg bg-info">
+      <form method="post">
+        {% csrf_token %}
+          <label>Username :</label>
+          <input type="text" name="username" class="form-control">
+          <label>Password :</label>
+          <input type="password" name="password" class="form-control">
+          <button class="btn btn-secondary mt-3" type="submit">Login</button>
+      </form>
+
+    </div>
+      <div class="row">
+        <label class="h6 ml-3">already have account<a href="{%url 'register'%}">register</a></label>
+        <label class="h6 ml-2">already have account<a href="#">as Admin</a></label>
+      </div>
+  </div>
+</div>
+{% endblock content %}

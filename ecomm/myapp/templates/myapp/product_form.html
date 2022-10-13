@@ -1,0 +1,28 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="py-3 text-center mt-3 text-info h3">Create New Product</div>
+  <div class="row">
+    <div class="col-md-8 p-3 text-center shadow-lg bg-info">
+      <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+          <p>
+              {{field.label_tag}}<br>
+              {{field}}<br>
+              {%if field.help_text%}
+              <small style="color: grey">{{field.help_text}}</small>
+              {%endif%}
+              {%for error in field.errors%}
+                <p style="color:red">
+                    {{error}}
+                </p>
+                {%endfor%}
+          </p>
+          {%endfor%}
+          <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

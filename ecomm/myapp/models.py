@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 # Create your models here.
@@ -16,9 +17,10 @@ class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=False)
+    quantity = models.IntegerField(default='1', max_length=6, null=True)
+    status = models.CharField(default='in stock', max_length=10, null=True)
     image = models.ImageField(null=True)
 
-   
     def __str__(self):
         return self.name
 
@@ -29,6 +31,9 @@ class Product(models.Model):
         except:
             url = ''
         return url
+
+    def get_absolute_url(self):
+        return reverse('detailview', kwargs={'pk': self.pk})
 
 
 class Order(models.Model):

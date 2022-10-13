@@ -1,0 +1,29 @@
+{% extends 'store/base.html'%}
+{% load static %}
+{% block content %}
+ <div class="row">
+    <div class="py-5">
+        <label class="h4">Available Products</label>
+        <p class="h3"><a href="{%url 'createnewproduct'%}" class="btn btn-primary">Add Product</a></p>
+    </div>
+
+    </div>
+<div class="row">
+
+{% for product in products %}
+       <div class="col-sm-4 mt-3 p-3">
+            <div class="card mycard">
+                <div class="card-header">
+                <div class="card-title mytitle h4 text-center">{{product.name}}</div>
+                </div>
+                <div class="card-body">
+                    <label class="mylabel h4">Total : {{product.quantity}}</label>
+                     <a href="{%url 'detailview' product.id%}" class="btn btn-secondary btn-sm mb-1 float-right">view detail</a>
+                </div>
+            </div>
+
+        </div>
+
+{% endfor %}
+</div>
+{% endblock content %}
